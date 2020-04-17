@@ -1,5 +1,5 @@
 /* global L */
-var kalismap = L.map('kalismap').setView([37.0902, -95.7129], 4)
+var kalismap = L.map('kalismap').setView([30.4515, -91.1871], 17)
 L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png').addTo(kalismap)
 var batonrougeLevee = L.marker([30.45136, -91.190708]).addTo(kalismap)
 var redstickfarmersMarket = L.polygon([
