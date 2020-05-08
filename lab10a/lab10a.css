@@ -1,0 +1,12 @@
+#lab10a { height: 500px; }
+h1 {
+  font-family: Times;
+  color: Black
+}
+body {
+  padding-top: 3.5rem;
+}
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
