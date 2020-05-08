@@ -2,4 +2,10 @@
 h1 {
   font-family: Times;
   color: Black
+  text-align: center;
+}
+body {
+  padding-top: 3.5rem;
+  padding: 3rem 1.5rem;
+  text-align: center;
 }
