@@ -1,21 +1,14 @@
 /* global L */
-var final = L.map('final').setView([32.67, -99.47], 4)
+var final = L.map('final').setView([23.6850, 90.3563], 6)
 var bangladeshLayerObject = L.layerGroup().addTo(final)
 var grayBasemapObject = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}').addTo(final)
-var povertydata = ''
+var povertydata = 'https://kalimartin.github.io/final/zila-poverty.geojson'
 var basemapsObject = {
   'Gray canvas': grayBasemapObject
 }
 jQuery.getJSON(povertydata, function (data) {
   var population = function (feature) {
-    var povertynumber = feature.properties.POP2010
-    var color = 'red'
-    if (povertynumber < 6162876.3) { color = 'pink' }
-    return {
-      color: color,
-      weight: 1,
-      fillOpacity: 0.5
-    }
+    var povertynumber = feature.properties.povertyRatio
   }
   var popstyle = {
     style: population,
@@ -24,12 +17,12 @@ jQuery.getJSON(povertydata, function (data) {
   L.geoJSON(data, popstyle).addTo(final)
 })
 var popfeature = function (feature, layer) {
-  var name = feature.properties.STATE_NAME
-  var population = feature.properties.POP2010
-  layer.bindPopup('2010 State population of ' + name + ': ' + population + '<br>Population average: 6162876.3')
+  var name = feature.properties.zila
+  var population = feature.properties.povertyRatio
+  layer.bindPopup(name + ' impoverished population (%)' + ': ' + population + '<br>National average of those living in poverty (%): 32.3')
   bangladeshLayerObject.addLayer(layer)
 }
 var layersObject = {
-  '2010 Population': statesLayerObject
+  'Poverty': bandladeshLayerObject
 }
 L.control.layers(basemapsObject, layersObject).addTo(final)
